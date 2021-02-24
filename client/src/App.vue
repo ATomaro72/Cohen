@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div>
     <div class="container">
       <div class="row header">
         <h1 v-if="!showTasks" class="col s6 offset-s3 center-align teal-text">To-Do List!</h1>
@@ -19,10 +19,18 @@
         <form @submit.prevent="submitTask" class="col s6 offset-s3">
           <div class="input-field">
             <i class="material-icons prefix">list</i>
-            <textarea v-model="newTask" id="icon_prefix2" class="materialize-textarea"></textarea>
-            <label for="icon_prefix2">Add a task?</label>
+            <textarea v-model="newTask" id="description" class="materialize-textarea" required></textarea>
+            <label for="description">Add a task?</label>
           </div>
-          <button class="btn waves-effect col s12" v-b-modal.modal-task>Add</button>
+          <div class="input-field">
+            <textarea v-model="duedate" id="duedate" class="materialize-textarea" required></textarea>
+            <label for="duedate">Due Date</label>
+         </div>
+         <div class="input-field">
+           <textarea v-model="priority" id="priority" class="materialize-textarea" required></textarea>
+           <label for="priority">Priority</label>
+          </div>
+          <button class="btn waves-effect col s12">Add</button>
         </form>
       </div>
       <div>
@@ -66,41 +74,6 @@
         </ul>    
       </div>
     </div>
-     <b-modal
-            id="modal-task"
-            ref="modal"
-            title="Submit Task"
-            @show="resetModal"
-            @hidden="resetModal"
-            @ok="handleOk"
-            :hide-header="true" :hide-header-close="true" :no-close-on-backdrop="true">
-          <form ref="form" @submit.stop.prevent="submitTaskModal">
-          <b-form-group
-              label="Description"
-              label-for="description-input"
-              invalid-feedback="Description is required"
-              :state="descriptionState"
-          >
-          <b-form-input id="duedate-input" v-model="Description" :state="descriptionState" required></b-form-input>
-          </b-form-group>
-          <b-form-group
-              label="Due Date"
-              label-for="duedate-input"
-              invalid-feedback="Due Date is required"
-              :state="dueDateState"
-          >
-          <b-form-input id="duedate-input" v-model="DueDate" :state="dueDateState" required></b-form-input>
-          </b-form-group>
-          <b-form-group
-              label="Priority"
-              label-for="priority-input"
-              invalid-feedback="Priority is required"
-              :state="priorityState"
-          >
-          <b-form-input id="priority-input" v-model="Priority" :state="priorityState" required></b-form-input>
-          </b-form-group>
-        </form>
-      </b-modal>
   </div>
 </template>
 <script lang="ts" src="./App.js"></script>

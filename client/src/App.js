@@ -41,6 +41,7 @@ export default {
       if (localStorage.tasks) {
         this.tasks = JSON.parse(localStorage.tasks);
       }
+      document.body.appendChild(this.$refs.modal.$el);
     },
     methods: {
       submitTodo() {
@@ -63,10 +64,7 @@ export default {
         this.showTasks = true;
         this.tasksFiltered =  this.tasks.filter(i => i.title == todo);
       },
-      submitTask () {
-        this.$bvmodal.show('modal-task');
-      },
-      submitTaskModal() {
+      submitTask() {
         this.tasks.push({
             title: this.selectedTask,
             taskTitle: this.newTask,
