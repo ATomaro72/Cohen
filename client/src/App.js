@@ -29,7 +29,7 @@ export default {
           localStorage.tasks = JSON.stringify(this.tasks);
         },
         deep: true,
-      },
+      }
     },
     mounted() {
       if (localStorage.todos) {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <div class="row header">
+      <div class="row">
         <h1 v-if="!showTasks" class="col s6 offset-s3 center-align teal-text">To-Do List!</h1>
         <h1 v-else class="col s6 offset-s3 center-align teal-text">Tasks List!</h1>      
       </div>
@@ -62,7 +62,7 @@
                 <b-button size="sm" class="mb-2" @click="showTaskFormEdit(task.title)">
                   <b-icon icon="pencil-square" aria-hidden="true"></b-icon>
                 </b-button> 
-                <span>{{task.description}} + {{task.priority}} + {{task.duedate}}</span>
+                <span>Desc:{{task.taskTitle}} Priority:{{task.taskPriority}}  Date:{{task.taskDueDate}}</span>
                 <span>
                   <a @click.prevent="deleteTask(task)">
                     <i class="material-icons right teal-text">delete</i>
@@ -77,8 +77,3 @@
   </div>
 </template>
 <script lang="ts" src="./App.js"></script>
-<style lang="scss">
-.header{
-  margin-top: 100px;
-}
-</style>
