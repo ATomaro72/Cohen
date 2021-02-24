@@ -1,4 +1,9 @@
 # Development
+**Tony notes: use npm run serve in the client directory to run vue cli service app.
+Crossing off of tasks not finished yet
+Tasks add and delete, but are not updating unless refreshed
+
+
 ## Running the Application
 [Node](https://nodejs.org/en/) must be installed on your machine.
 
