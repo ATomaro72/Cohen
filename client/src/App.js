@@ -58,7 +58,7 @@ export default {
       deleteTask(task) {
         const taskIndex = this.tasks.indexOf(task);
         const title = task.title;
-        this.tasks.splice(todoIndex, 1);
+        this.tasks.splice(taskIndex, 1);
       },
       showTasksForTodo(todo) {
         this.selectedTask = todo;
