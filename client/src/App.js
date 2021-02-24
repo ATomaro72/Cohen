@@ -12,12 +12,9 @@ export default {
         selectedTask: '',
         showModal: false,
         showTasks: false,
-        priorityState: null,
-        descriptionState: null,
-        dueDateState: null,
-        DueDate: '',
-        Priority: '',
-        Description: ''
+        duedate: '',
+        priority: '',
+        description: ''
       };
     },
     watch: {
@@ -41,7 +38,6 @@ export default {
       if (localStorage.tasks) {
         this.tasks = JSON.parse(localStorage.tasks);
       }
-      document.body.appendChild(this.$refs.modal.$el);
     },
     methods: {
       submitTodo() {
@@ -59,6 +55,11 @@ export default {
         }
         this.todos.splice(todoIndex, 1);
       },
+      deleteTask(task) {
+        const taskIndex = this.tasks.indexOf(task);
+        const title = task.title;
+        this.tasks.splice(todoIndex, 1);
+      },
       showTasksForTodo(todo) {
         this.selectedTask = todo;
         this.showTasks = true;
@@ -67,38 +68,20 @@ export default {
       submitTask() {
         this.tasks.push({
             title: this.selectedTask,
-            taskTitle: this.newTask,
+            taskTitle: this.description,
+            taskDueDate: this.duedate,
+            taskPriority: this.priority,
             done: false,
           });
-        this.newTask = '';
+        this.tasksFiltered =  this.tasks.filter(i => i.title == todo);
+        this.description = '';
+        this.duedate = '';
+        this.priority = '';
       },
       showTasksFormEdit(todo) {
         this.selectedTask = todo;
         this.showTasks = true;
         this.tasksFiltered =  this.tasks.filter(i => i.title == todo);
-      },
-      checkFormValidity() {
-        const valid = this.$refs.form.checkValidity();
-        this.descriptionState = valid;
-        this.dueDateState = valid;
-        this.priorityState = valid;
-        return valid
-      },
-      resetModal() {
-       this.descriptionState = null;
-       this.dueDateState = null;
-       this.priorityState = null;
-       this.Priority = '';
-       this.DueDate = '';
-       this.Description = '';
-        // this.name = ''
-        // this.nameState = null
-      },
-      handleOk(bvModalEvt) {
-        // Prevent modal from closing
-        bvModalEvt.preventDefault();
-        // Trigger submit handler
-        this.submitTaskModal();
-      },
+      }
     },
   };

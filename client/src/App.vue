@@ -19,7 +19,7 @@
         <form @submit.prevent="submitTask" class="col s6 offset-s3">
           <div class="input-field">
             <i class="material-icons prefix">list</i>
-            <textarea v-model="newTask" id="description" class="materialize-textarea" required></textarea>
+            <textarea v-model="description" id="description" class="materialize-textarea" required></textarea>
             <label for="description">Add a task?</label>
           </div>
           <div class="input-field">
@@ -62,9 +62,9 @@
                 <b-button size="sm" class="mb-2" @click="showTaskFormEdit(task.title)">
                   <b-icon icon="pencil-square" aria-hidden="true"></b-icon>
                 </b-button> 
-                <span>{{task.taskTitle}}</span>
+                <span>{{task.description}} + {{task.priority}} + {{task.duedate}}</span>
                 <span>
-                  <a @click.prevent="deleteTodo(todo)">
+                  <a @click.prevent="deleteTask(task)">
                     <i class="material-icons right teal-text">delete</i>
                   </a>
                 </span>
